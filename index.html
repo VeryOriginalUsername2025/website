@@ -3,9 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Plugin Games Store</title>
-  <div style="margin-bottom:20px; font-size:14px; color:#888; text-align:center;">
-  <strong>Only authentic on skankhunt.sbs</strong> — all other sites are imitations.
-</div>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -38,6 +35,7 @@
       padding: 10px;
       text-align: center;
       box-shadow: 0 0 8px rgba(0,0,0,0.4);
+      position: relative;
     }
     .game img {
       width: 100%;
@@ -62,11 +60,27 @@
     .buy-link:hover {
       background: #2563eb;
     }
+    .game::after {
+      content: "skankhunt.sbs";
+      position: absolute;
+      bottom: 6px;
+      right: 10px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      text-shadow: 1px 1px 2px #000;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
 
 <h1>Game Store Links</h1>
+
+<!-- BRANDING HEADER (richtige Position) -->
+<div style="margin-bottom:20px; font-size:14px; color:#888; text-align:center;">
+  <strong>Only authentic on skankhunt.sbs</strong> — all other sites are imitations.
+</div>
+
 <input type="text" id="search" placeholder="Search Game… (e.g. Minecraft, Halo)">
 
 <div class="grid" id="games">
