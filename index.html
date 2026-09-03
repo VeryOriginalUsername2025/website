@@ -26,8 +26,38 @@
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 600px) {
+      /* Layout */
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      body {
+        padding: 10px;
+      }
+      /* Suche */
+      #search {
+        max-width: 100%;
+        font-size: 16px;
+        padding: 12px;
+      }
+      /* Buttons */
+      .buy-link {
+        padding: 12px 16px;
+        font-size: 16px;
+      }
+      /* Hover deaktivieren */
+      .game:hover {
+        transform: none;
+        box-shadow: 0 0 8px rgba(0,0,0,0.4);
+      }
+      /* Bilder */
+      .game img {
+        height: auto;
+        object-fit: contain;
+      }
     }
     .game {
       background: #1b1b1b;
