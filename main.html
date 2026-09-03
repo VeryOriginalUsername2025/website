@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Store Links</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    #search {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background: #222;
+      color: #eee;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .game {
+      background: #1b1b1b;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 0 8px rgba(0,0,0,0.4);
+    }
+    .game img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .game-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .buy-link {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 4px;
+      background: #3b82f6;
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .buy-link:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Game Store Links</h1>
+<input type="text" id="search" placeholder="Search Game… (e.g. Minecraft, Halo)">
+
+<div class="grid" id="games">
+
+  <!-- BEISPIELE – HIER DEINE SPIELE EINTRAGEN -->
+
+  <div class="game" data-title="Elden Ring">
+    <img src="Pics/elden_ring.jpg" alt="Elden Ring">
+    <div class="game-title">Elden Ring</div>
+    <a class="buy-link" href="https://buy.stripe.com/DEIN_LINK_ELDEN_RING" target="_blank">
+      Buy now
+    </a>
+  </div>
+
+  <div class="game" data-title="FIFA 25">
+    <img src="Pics/elden_ring.jpg" alt="FIFA 25">
+    <div class="game-title">Elden Ring</div>
+    <a class="buy-link" href="https://buy.stripe.com/DEIN_LINK_ELDEN_RING" target="_blank">
+      Buy now
+    </a>
+  </div>
+
+  <div class="game" data-title="GTA 5">
+    <img src="Pics/elden_ring.jpg" alt="GTA 5">
+    <div class="game-title">Elden Ring</div>
+    <a class="buy-link" href="https://buy.stripe.com/DEIN_LINK_ELDEN_RING" target="_blank">
+      Buy now
+    </a>
+  </div>
+
+  <!-- WEITERE SPIELE EINFACH KOPIEREN UND ANPASSEN -->
+
+</div>
+
+<script>
+  const searchInput = document.getElementById('search');
+  const games = document.querySelectorAll('.game');
+
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase();
+    games.forEach(game => {
+      const title = game.dataset.title.toLowerCase();
+      game.style.display = title.includes(query) ? 'block' : 'none';
+    });
+  });
+</script>
+
+</body>
+</html>
