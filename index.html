@@ -48,7 +48,7 @@
 		#clear-search {
 			position: absolute;
 			right: 30px;
-			top: 50%;
+			top: 35%;
 			transform: translateY(-50%);
 			font-size: 40px;
 			color: #888;
@@ -203,6 +203,19 @@
 		#games {
 			margin-top: 25px;
 		}
+
+		#result-count {
+			display: none;
+			background: #1ae608;
+			color: #000000 !important;
+			font-size: 20px !important;
+			font-weight: bold;
+			padding: 6px 12px;
+			border-radius: 6px;
+			width: fit-content;
+			margin: 12px 0 8px 0;
+			box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+		}
 	</style>
 </head>
 
@@ -217,8 +230,8 @@
 	<div class="search-wrapper">
 		<input type="text" id="search" placeholder="Search Game… (e.g. Minecraft, Halo)">
 		<div id="clear-search">×</div>
+		<div id="result-count" style="font-size:14px; color:#aaa; margin:10px 0 5px 0; display:none;"></div>
 	</div>
-
 
 	<div class="grid" id="games">
 		<div class="game" data-title="ACA NeoGeo Single Game">
@@ -1172,6 +1185,9 @@
 		const games = Array.from(gamesContainer.querySelectorAll('.game'));
 		const incompleteGames = Array.from(incompleteContainer.querySelectorAll('.game'));
 
+		const incompleteTitle = document.getElementById('incomplete-title');
+		const resultCount = document.getElementById('result-count');
+
 		// Alphabetisch sortieren (nur Hauptspiele)
 		games.sort((a, b) => {
 			const titleA = a.dataset.title.toLowerCase();
@@ -1180,8 +1196,6 @@
 		});
 
 		games.forEach(game => gamesContainer.appendChild(game));
-
-		const incompleteTitle = document.getElementById('incomplete-title');
 
 		// Suchfunktion für beide Bereiche
 		searchInput.addEventListener('input', () => {
@@ -1199,8 +1213,20 @@
 
 				game.style.display = (matchesTitle || matchesID) ? 'flex' : 'none';
 			});
+
 			const anyIncompleteVisible = incompleteGames.some(g => g.style.display !== 'none');
 			incompleteTitle.style.display = anyIncompleteVisible ? 'block' : 'none';
+
+			// ⭐ Treffer zählen
+			const visibleGames = [...games, ...incompleteGames].filter(g => g.style.display !== 'none').length;
+
+			// ⭐ Result-Anzeige aktualisieren
+			if (query.length > 0) {
+				resultCount.style.display = 'block';
+				resultCount.textContent = `${visibleGames} result${visibleGames !== 1 ? 's' : ''} found`;
+			} else {
+				resultCount.style.display = 'none';
+			}
 		});
 
 		// Clear-Button Funktion
@@ -1211,6 +1237,9 @@
 			[...games, ...incompleteGames].forEach(game => {
 				game.style.display = 'flex';
 			});
+
+			incompleteTitle.style.display = 'block';
+			resultCount.style.display = 'none';
 		});
 	</script>
 
