@@ -137,8 +137,8 @@
 			bottom: 150px;
 			right: 30px;
 			font-size: 22px;
-			color: #ffcc00;
-			text-shadow: 0 0 6px #ffcc00;
+			color: #e5ff00;
+			text-shadow: 0 0 6px #ff0202;
 			z-index: 5;
 		}
 
@@ -418,8 +418,12 @@
 			</div>
 		</div>
 
-		<div class="game" data-title="Train Sim World® 3">
-			<img src="pics\1669996905.jpg" alt="Train Sim World® 3">
+		<div class="game" data-title="Train Sim World® 3" data-description="
+Unlock Order Information:<br><br>
+<ul>
+  WARNING: ID 72 and 128 are unobtainable!
+</ul>">
+			<img src="pics\1669996905.jpg" alt="Train Sim World® 3" class="info-trigger">
 			<div class="game-title">Train Sim World® 3</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1669996905</div>
@@ -430,8 +434,12 @@
 			</div>
 		</div>
 
-		<div class="game" data-title="Train Sim World® 2">
-			<img src="pics\1763742865.jpg" alt="Train Sim World® 2">
+		<div class="game" data-title="Train Sim World® 2" data-description="
+Unlock Order Information:<br><br>
+<ul>
+  WARNING: ID 183, 342 and 424 are unobtainable!
+</ul>">
+			<img src="pics\1763742865.jpg" alt="Train Sim World® 2" class="info-trigger">
 			<div class="game-title">Train Sim World® 2</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1763742865</div>
@@ -549,8 +557,13 @@ Unlock Order Information:<br><br>
 			</div>
 		</div>
 
-		<div class="game" data-title="DRAGON BALL XENOVERSE 2">
-			<img src="pics\1019460860.jpg" alt="DRAGON BALL XENOVERSE 2">
+		<div class="game" data-title="DRAGON BALL XENOVERSE 2" data-description="
+Unlock Order Information:<br><br>
+<ul>
+	<li>do NOT unlock ID 20 before 19</li>
+	<li>do NOT unlock ID 23 before 22</li>
+</ul>">
+			<img src="pics\1019460860.jpg" alt="DRAGON BALL XENOVERSE 2" class="info-trigger">
 			<div class="game-title">DRAGON BALL XENOVERSE 2</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1019460860</div>
@@ -1261,8 +1274,12 @@ Unlock Order Information:<br><br>
 	<h2 id="incomplete-title">Incomplete Games</h2>
 
 	<div class="grid" id="incomplete">
-		<div class="game" data-title="Iron Harvest (Windows)">
-			<img src="pics\1866354476.jpg" alt="Iron Harvest (Windows)">
+		<div class="game" data-title="Iron Harvest (Windows)" data-description="
+Unlock Order Information:<br><br>
+<ul>
+ WARNING: 'The Best of the Best' is missing!
+</ul>">
+			<img src="pics\1866354476.jpg" alt="Iron Harvest (Windows)" class="info-trigger">
 			<div class="game-title">Iron Harvest (Windows)</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1866354476</div>
@@ -1273,8 +1290,12 @@ Unlock Order Information:<br><br>
 			</div>
 		</div>
 
-		<div class="game" data-title="X-Morph: Defense">
-			<img src="pics\333251915.jpg" alt="X-Morph: Defense">
+		<div class="game" data-title="X-Morph: Defense" data-description="
+Unlock Order Information:<br><br>
+<ul>
+ WARNING: 'Explorer', 'Heartbreaker', 'Swordbearer' and 'Legendlord' is missing!
+</ul>">
+			<img src="pics\333251915.jpg" alt="X-Morph: Defense" class="info-trigger">
 			<div class="game-title">X-Morph: Defense</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 333251915</div>
@@ -1285,8 +1306,12 @@ Unlock Order Information:<br><br>
 			</div>
 		</div>
 
-		<div class="game" data-title="Mount & Blade II: Bannerlord">
-			<img src="pics\1971845611.jpg" alt="Mount & Blade II: Bannerlord">
+		<div class="game" data-title="Mount & Blade II: Bannerlord" data-description="
+Unlock Order Information:<br><br>
+<ul>
+ WARNING: Survival Mode DLC achievements are missing!
+</ul>">
+			<img src="pics\1971845611.jpg" alt="Mount & Blade II: Bannerlord" class="info-trigger">
 			<div class="game-title">Mount & Blade II: Bannerlord</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1971845611</div>
@@ -1316,14 +1341,14 @@ Unlock Order Information:<br><br>
 		const games = Array.from(gamesContainer.querySelectorAll('.game'));
 		const incompleteGames = Array.from(incompleteContainer.querySelectorAll('.game'));
 
-		games.forEach(game => {
+		[...games, ...incompleteGames].forEach(game => {
 			const desc = (game.dataset.description || "").toLowerCase();
 
 			const hasWarning =
 				desc.includes("do not") ||
 				desc.includes("warning") ||
 				desc.includes("you're fucked") ||
-				desc.includes("unlock order");
+				desc.includes("unlock order information");
 
 			if (hasWarning) {
 				game.classList.add("has-warning");
