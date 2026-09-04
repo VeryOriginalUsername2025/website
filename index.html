@@ -216,12 +216,77 @@
 			margin: 12px 0 8px 0;
 			box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
 		}
+
+		#plugin-info {
+			margin: 15px 0 25px 0;
+			padding: 14px;
+			background: #0f0f0f;
+			border: 1px solid #1ae608;
+			border-radius: 10px;
+			text-align: center;
+			font-size: 17px;
+			color: #eee;
+			box-shadow: 0 0 22px rgba(26, 230, 8, 0.75);
+			animation: glowPulse 3s infinite alternate;
+		}
+
+		@keyframes glowPulse {
+			from {
+				box-shadow: 0 0 12px rgba(26, 230, 8, 0.5);
+			}
+
+			to {
+				box-shadow: 0 0 32px rgba(26, 230, 8, 1);
+			}
+		}
+
+		#plugin-info a {
+			color: #1ae608;
+			font-weight: bold;
+			text-decoration: none;
+		}
+
+		#plugin-info a:hover {
+			text-shadow: 0 0 8px #1ae608;
+		}
+
+		#plugin-info .plugin-row {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 18px;
+			flex-wrap: wrap;
+			font-size: 17px;
+			color: #eee;
+		}
+
+		#plugin-info .separator {
+			color: #1ae608;
+			font-weight: bold;
+			font-size: 20px;
+		}
 	</style>
 </head>
 
 <body>
 
 	<h1>Plugin Game Store</h1>
+
+	<div id="plugin-info">
+		<div class="plugin-row">
+			<span class="left">
+				Buy the Xbox v2‑Achievement Auto‑Unlocker Plugin:
+				<a href="https://ko-fi.com/s/30d56631fa" target="_blank">Ko‑Fi Link</a>
+			</span>
+
+			<span class="separator">|</span>
+
+			<span class="right">
+				Join the community:
+				<a href="https://discord.gg/C726WrZWbt" target="_blank">Discord</a>
+			</span>
+		</div>
+	</div>
 
 	<div style="margin-bottom:20px; font-size:14px; color:#888; text-align:center;">
 		<strong>Only authentic on https://skankhunt.sbs</strong> — all other sites are fakes.
