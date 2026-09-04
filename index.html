@@ -218,26 +218,36 @@
 		}
 
 		#plugin-info {
+			position: relative;
+			overflow: hidden;
 			margin: 15px 0 25px 0;
 			padding: 14px;
-			background: #0f0f0f;
+			background: #0a0a0a;
 			border: 1px solid #1ae608;
 			border-radius: 10px;
 			text-align: center;
 			font-size: 17px;
 			color: #eee;
-			box-shadow: 0 0 22px rgba(26, 230, 8, 0.75);
-			animation: glowPulse 3s infinite alternate;
+			font-family: "Courier New", monospace;
+			letter-spacing: 1px;
+			box-shadow:
+				0 0 22px rgba(26, 230, 8, 0.75),
+				inset 0 0 12px rgba(26, 230, 8, 0.3);
 		}
 
-		@keyframes glowPulse {
-			from {
-				box-shadow: 0 0 12px rgba(26, 230, 8, 0.5);
-			}
+		/* Canvas füllt die Box */
+		#matrix-canvas {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
 
-			to {
-				box-shadow: 0 0 32px rgba(26, 230, 8, 1);
-			}
+		/* Text über dem Rain */
+		#plugin-info .plugin-row {
+			position: relative;
+			z-index: 10;
 		}
 
 		#plugin-info a {
@@ -249,23 +259,8 @@
 		#plugin-info a:hover {
 			text-shadow: 0 0 8px #1ae608;
 		}
-
-		#plugin-info .plugin-row {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 18px;
-			flex-wrap: wrap;
-			font-size: 17px;
-			color: #eee;
-		}
-
-		#plugin-info .separator {
-			color: #1ae608;
-			font-weight: bold;
-			font-size: 20px;
-		}
 	</style>
+
 </head>
 
 <body>
@@ -273,17 +268,24 @@
 	<h1>Plugin Game Store</h1>
 
 	<div id="plugin-info">
+		<canvas id="matrix-canvas"></canvas>
 		<div class="plugin-row">
 			<span class="left">
-				Buy the Xbox v2‑Achievement Auto‑Unlocker Plugin:
-				<a href="https://ko-fi.com/s/30d56631fa" target="_blank">Ko‑Fi Link</a>
+				Buy the Plugin:
+				<a href="https://ko-fi.com/s/30d56631fa" target="_blank">
+					<img src="https://storage.ko-fi.com/cdn/logomarkLogo.png" alt="Ko-Fi Logo"
+						style="height:22px; vertical-align:middle; margin-right:6px;">
+				</a>
 			</span>
 
 			<span class="separator">|</span>
 
 			<span class="right">
 				Join the community:
-				<a href="https://discord.gg/C726WrZWbt" target="_blank">Discord</a>
+				<a href="https://discord.gg/C726WrZWbt" target="_blank">
+					<img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg" alt="Discord"
+						style="height:22px; vertical-align:middle; margin-right:6px;">
+				</a>
 			</span>
 		</div>
 	</div>
@@ -1306,6 +1308,72 @@
 			incompleteTitle.style.display = 'block';
 			resultCount.style.display = 'none';
 		});
+	</script>
+	<script>
+		(function () {
+			const container = document.getElementById('plugin-info');
+			const canvas = document.getElementById('matrix-canvas');
+			const ctx = canvas.getContext('2d');
+
+			function resizeCanvas() {
+				const rect = container.getBoundingClientRect();
+				canvas.width = rect.width;
+				canvas.height = rect.height;
+			}
+
+			resizeCanvas();
+			window.addEventListener('resize', resizeCanvas);
+
+			// Zeichenpool (Latin + Katakana + Glitch)
+			const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ｱｶｻﾀﾅﾊﾏﾔﾗﾜｷｸｹｺｻｼｽｾｿﾁﾂﾃﾄﾆﾇﾈﾉﾋﾌﾍﾎﾐﾑﾒﾓﾕﾖ[]{}|/\\#$%&*+-=ΩΣλπ∞√∆';
+
+			const fontSize = 18;
+			const columns = Math.floor(canvas.width / fontSize);
+			const drops = [];
+
+			for (let i = 0; i < columns; i++) {
+				drops[i] = Math.random() * canvas.height / fontSize;
+			}
+
+			function draw() {
+				// leichtes „Trail“-Overlay
+				ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+				ctx.font = fontSize + 'px "Courier New", monospace';
+
+				for (let i = 0; i < drops.length; i++) {
+					const text = chars.charAt(Math.floor(Math.random() * chars.length));
+					const x = i * fontSize;
+					const y = drops[i] * fontSize;
+
+					// hintere Zeichen: normales Grün
+					ctx.fillStyle = 'rgba(0, 255, 0, 0.55)';
+					ctx.fillText(text, x, y);
+
+					// Leading Glow: helles Weiß/Grün mit Glow
+					if (Math.random() < 0.25) { // Pop‑In/Flicker
+						ctx.fillStyle = '#ffffff';
+						ctx.shadowColor = '#1ae608';
+						ctx.shadowBlur = 12;
+						ctx.fillText(text, x, y);
+						ctx.shadowBlur = 0;
+					}
+
+					// Drop nach unten bewegen
+					drops[i]++;
+
+					// Reset, wenn unten
+					if (y > canvas.height && Math.random() > 0.975) {
+						drops[i] = 0;
+					}
+				}
+
+				requestAnimationFrame(draw);
+			}
+
+			draw();
+		})();
 	</script>
 
 </body>
