@@ -131,6 +131,17 @@
 			height: 100%;
 		}
 
+		.game.has-warning::before {
+			content: "⚠ Info in Pic ⚠";
+			position: absolute;
+			bottom: 150px;
+			right: 30px;
+			font-size: 22px;
+			color: #ffcc00;
+			text-shadow: 0 0 6px #ffcc00;
+			z-index: 5;
+		}
+
 		.title-id {
 			font-size: 12px;
 			color: #888;
@@ -259,6 +270,40 @@
 		#plugin-info a:hover {
 			text-shadow: 0 0 8px #1ae608;
 		}
+
+		.popup {
+			display: none;
+			position: fixed;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.85);
+			backdrop-filter: blur(4px);
+			z-index: 9999;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.popup-content {
+			background: #0a0a0a;
+			border: 1px solid #1ae608;
+			border-radius: 10px;
+			padding: 20px;
+			width: 80%;
+			max-width: 600px;
+			color: #eee;
+			box-shadow: 0 0 22px rgba(26, 230, 8, 0.75);
+			font-family: "Courier New", monospace;
+		}
+
+		.close-btn {
+			float: right;
+			font-size: 28px;
+			cursor: pointer;
+			color: #1ae608;
+		}
+
+		.close-btn:hover {
+			text-shadow: 0 0 8px #1ae608;
+		}
 	</style>
 
 </head>
@@ -283,8 +328,8 @@
 			<span class="right">
 				Join the community:
 				<a href="https://discord.gg/C726WrZWbt" target="_blank">
-					<img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg" alt="Discord"
-						style="height:22px; vertical-align:middle; margin-right:6px;">
+					<img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg"
+						alt="Discord" style="height:22px; vertical-align:middle; margin-right:6px;">
 				</a>
 			</span>
 		</div>
@@ -433,8 +478,12 @@
 			</div>
 		</div>
 
-		<div class="game" data-title="Halo Wars: Definitive Edition">
-			<img src="pics\1030018025.jpg" alt="Halo Wars: Definitive Edition">
+		<div class="game" data-title="Halo Wars: Definitive Edition" data-description="
+Unlock Order Information:<br><br>
+<ul>
+  ID 42 -> will unlock when ALL other achievements are unlocked and it has no own trigger.
+</ul>">
+			<img src="pics\1030018025.jpg" alt="Halo Wars: Definitive Edition" class="info-trigger">
 			<div class="game-title">Halo Wars: Definitive Edition</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1030018025</div>
@@ -445,8 +494,15 @@
 			</div>
 		</div>
 
-		<div class="game" data-title="Halo Wars 2">
-			<img src="pics\1667928394.jpg" alt="Halo Wars 2">
+		<div class="game" data-title="Halo Wars 2" data-description="
+Unlock Order Information:<br><br>
+<ul>
+  <li>Unlocking ID 10 to 22 in order will automatically unlock ID 26, 27 and 6 instant.</li>
+  <li>Do NOT unlock ID 7 before 67 or you're fucked as this unlocks Blitz Wave 25 BEFORE Wave 10.</li>
+  <li>ID 105 is not intended to unlock anything. Though once done and you unlock ID 106 afterwards, this will unlock ID 105, 106 and 107 instant.</li>
+  <li>Unlocking ID 115, 117, 119, 122 and 124 in order will unlock ID 127, 128 and 129 instant.</li>
+</ul>">
+			<img src="pics\1667928394.jpg" alt="Halo Wars 2" class="info-trigger">
 			<div class="game-title">Halo Wars 2</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1667928394</div>
@@ -1242,6 +1298,14 @@
 		</div>
 	</div>
 
+	<div id="game-info-popup" class="popup">
+		<div class="popup-content">
+			<span class="close-btn">&times;</span>
+			<h2 id="popup-title"></h2>
+			<p id="popup-description"></p>
+		</div>
+	</div>
+
 	<script>
 		const searchInput = document.getElementById('search');
 		const clearBtn = document.getElementById('clear-search');
@@ -1251,6 +1315,20 @@
 
 		const games = Array.from(gamesContainer.querySelectorAll('.game'));
 		const incompleteGames = Array.from(incompleteContainer.querySelectorAll('.game'));
+
+		games.forEach(game => {
+			const desc = (game.dataset.description || "").toLowerCase();
+
+			const hasWarning =
+				desc.includes("do not") ||
+				desc.includes("warning") ||
+				desc.includes("you're fucked") ||
+				desc.includes("unlock order");
+
+			if (hasWarning) {
+				game.classList.add("has-warning");
+			}
+		});
 
 		const incompleteTitle = document.getElementById('incomplete-title');
 		const resultCount = document.getElementById('result-count');
@@ -1374,6 +1452,21 @@
 
 			draw();
 		})();
+	</script>
+	<script>
+		// Bild klickbar machen
+		document.querySelectorAll('.game img').forEach(img => {
+			img.addEventListener('click', () => {
+				const game = img.closest('.game');
+				document.getElementById('popup-title').textContent = game.dataset.title;
+				document.getElementById('popup-description').innerHTML = game.dataset.description;
+				document.getElementById('game-info-popup').style.display = 'flex';
+			});
+		});
+
+		document.querySelector('.close-btn').addEventListener('click', () => {
+			document.getElementById('game-info-popup').style.display = 'none';
+		});
 	</script>
 
 </body>
