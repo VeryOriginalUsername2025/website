@@ -31,7 +31,8 @@
 
 		h2,
 		h3,
-		h4 {
+		h4,
+		h5 {
 			font-size: 26px;
 			font-weight: bold;
 			letter-spacing: 1px;
@@ -383,6 +384,23 @@
 	<h2>Skankhunt's Games</h2>
 
 	<div class="grid" id="skank">
+		<div class="game" data-title="Batman™: Arkham Knight" data-creator="skank" data-description="
+Order Information:<br><br>
+<ul>
+ <li>This Game is free on Plugin from start!</li>
+ <li>This Game is also free when purchasing at least a Premium membership for XAU Mobile!</li>
+</ul>">
+			<img src="pics\1479758055.jpg" alt="Batman™: Arkham Knight">
+			<div class="game-middle">
+				<div class="game-title">Batman™: Arkham Knight</div>
+			</div>
+			<div class="game-bottom">
+				<div class="title-id">Title ID: 1479758055</div>
+				<div class="price">FREE</div>
+				<a class="buy-link" href="https://ko-fi.com/s/30d56631fa" target="_blank">Buy now</a>
+			</div>
+		</div>
+
 		<div class="game" data-title="Train Sim World® 7: Free Starter Edition" data-creator="skank">
 			<img src="pics\2130778777.jpg" alt="Train Sim World® 7: Free Starter Edition">
 			<div class="game-middle">
@@ -419,7 +437,11 @@
 			</div>
 		</div>
 
-		<div class="game" data-title="Car for Sale Simulator 2023 - Desktop" data-creator="skank">
+		<div class="game" data-title="Car for Sale Simulator 2023 - Desktop" data-creator="skank" data-description="
+Unlock Order Information:<br><br>
+<ul>
+  WARNING: Thought the Event is correct - ID 21 is hard unobtainable! The Dev needs to reconfigure this in Partner Center!
+</ul>">
 			<img src="pics\2117315513.jpg" alt="Car for Sale Simulator 2023 - Desktop">
 			<div class="game-middle">
 				<div class="game-title">Car for Sale Simulator 2023 - Desktop</div>
@@ -1522,7 +1544,59 @@ Unlock Order Information:<br><br>
 		</div>
 	</div>
 
-	<h4 id="incomplete-title">Incomplete Games</h4>
+	<h4>Nacli's Games</h4>
+
+	<div class="grid" id="nacly">
+		<div class="game" data-title="Quantum Break" data-creator="nacly" data-description="
+Order Information:<br><br>
+<ul>
+ This Game is free only when purchasing at least a Premium membership for XAU Mobile!
+</ul>">
+			<img src="pics\333628240.jpg" alt="Quantum Break">
+			<div class="game-middle">
+				<div class="game-title">Quantum Break</div>
+			</div>
+			<div class="game-bottom">
+				<div class="title-id">Title ID: 333628240</div>
+				<div class="price">FREE</div>
+				<a class="buy-link" href="https://clowningcrew.lol/premium" target="_blank">Get now</a>
+			</div>
+		</div>
+
+		<div class="game" data-title="GyroShooter VR" data-creator="nacly" data-description="
+Order Information:<br><br>
+<ul>
+ This Game is free only when purchasing at least a Premium membership for XAU Mobile!
+</ul>">
+			<img src="pics\542125675.jpg" alt="GyroShooter VR">
+			<div class="game-middle">
+				<div class="game-title">GyroShooter VR</div>
+			</div>
+			<div class="game-bottom">
+				<div class="title-id">Title ID: 542125675</div>
+				<div class="price">FREE</div>
+				<a class="buy-link" href="https://clowningcrew.lol/premium" target="_blank">Get now</a>
+			</div>
+		</div>
+
+		<div class="game" data-title="Call of Duty®: Ghosts (Windows)" data-creator="nacly" data-description="
+Order Information:<br><br>
+<ul>
+ This Game is free only when purchasing at least a Premium membership for XAU Mobile!
+</ul>">
+			<img src="pics\1724764656.jpg" alt="Call of Duty®: Ghosts (Windows)">
+			<div class="game-middle">
+				<div class="game-title">Call of Duty®: Ghosts (Windows)</div>
+			</div>
+			<div class="game-bottom">
+				<div class="title-id">Title ID: 1724764656</div>
+				<div class="price">FREE</div>
+				<a class="buy-link" href="https://clowningcrew.lol/premium" target="_blank">Get now</a>
+			</div>
+		</div>
+	</div>
+
+	<h5 id="incomplete-title">Incomplete Games</h5>
 
 	<div class="grid" id="incomplete">
 		<div class="game" data-title="Iron Harvest (Windows)" data-description="
@@ -1583,7 +1657,7 @@ Unlock Order Information:<br><br>
 	<div id="game-info-popup" class="popup">
 		<div class="popup-content">
 			<span class="close-btn">&times;</span>
-			<h4 id="popup-title"></h4>
+			<h5 id="popup-title"></h5>
 			<p id="popup-description"></p>
 		</div>
 	</div>
@@ -1595,7 +1669,8 @@ Unlock Order Information:<br><br>
 		// Creator-Container
 		const creatorContainers = [
 			document.getElementById('skank'),
-			document.getElementById('carmine')
+			document.getElementById('carmine'),
+			document.getElementById('nacly')
 		];
 
 		// Incomplete-Container
@@ -1614,11 +1689,7 @@ Unlock Order Information:<br><br>
 			const desc = (game.dataset.description || "").toLowerCase();
 
 			const hasWarning =
-				desc.includes("do not") ||
-				desc.includes("warning") ||
-				desc.includes("you're fucked") ||
-				desc.includes("unlock order") ||
-				desc.includes("missing");
+				desc.includes("information")
 
 			if (hasWarning) {
 				game.classList.add("has-warning");
