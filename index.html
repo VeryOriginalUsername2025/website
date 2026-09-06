@@ -163,6 +163,26 @@
 			z-index: 5;
 		}
 
+		.game-middle {
+			min-height: 48px;
+			max-height: 48px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 4px 6px;
+			text-align: center;
+			overflow: hidden;
+		}
+
+		.game-bottom {
+			margin-top: auto;
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			border-top: 1px solid #222;
+			padding-top: 5px;
+		}
+
 		.title-id {
 			font-size: 12px;
 			color: #888;
@@ -175,23 +195,14 @@
 			letter-spacing: 0.5px;
 		}
 
-		.game-bottom {
-			margin-top: auto;
-			display: flex;
-			flex-direction: column;
-			gap: 5px;
-			border-top: 1px solid #222;
-			padding-top: 5px;
-		}
-
 		.game:hover {
 			transform: translateY(-12px) scale(1.04);
 			box-shadow: 0 12px 28px rgba(0, 0, 0, 0.75), 0 0 18px rgba(59, 130, 246, 0.35);
 		}
 
 		.game img {
-			width: 100%;
-			height: auto;
+			width: auto;
+			height: 270px;
 			object-fit: contain;
 			border-radius: 6px;
 			margin-bottom: 10px;
@@ -372,9 +383,11 @@
 	<h2>Skankhunt's Games</h2>
 
 	<div class="grid" id="skank">
-		<div class="game" data-title="Train Sim World® 7: Free Starter Edition" data-creator="skank"><img
-				src="pics\2130778777.jpg" alt="Train Sim World® 7: Free Starter Edition">
-			<div class="game-title">Train Sim World® 7: Free Starter Edition</div>
+		<div class="game" data-title="Train Sim World® 7: Free Starter Edition" data-creator="skank">
+			<img src="pics\2130778777.jpg" alt="Train Sim World® 7: Free Starter Edition">
+			<div class="game-middle">
+				<div class="game-title">Train Sim World® 7: Free Starter Edition</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 2130778777</div>
 				<div class="price">10 €</div><a class="buy-link"
@@ -382,8 +395,11 @@
 			</div>
 		</div>
 
-		<div class="game" data-title="Gunscape" data-creator="skank"><img src="pics\27466162.jpg" alt="Gunscape">
-			<div class="game-title">Gunscape</div>
+		<div class="game" data-title="Gunscape" data-creator="skank">
+			<img src="pics\27466162.jpg" alt="Gunscape">
+			<div class="game-middle">
+				<div class="game-title">Gunscape</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 27466162</div>
 				<div class="price">5 €</div><a class="buy-link" href="https://donate.stripe.com/6oUdRcb2acM525r5YH08g0l"
@@ -391,8 +407,11 @@
 			</div>
 		</div>
 
-		<div class="game" data-title="Disc Room" data-creator="skank"><img src="pics\1799432498.jpg" alt="Disc Room">
-			<div class="game-title">Disc Room</div>
+		<div class="game" data-title="Disc Room" data-creator="skank">
+			<img src="pics\1799432498.jpg" alt="Disc Room">
+			<div class="game-middle">
+				<div class="game-title">Disc Room</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1799432498</div>
 				<div class="price">5 €</div><a class="buy-link" href="https://donate.stripe.com/bJebJ42vE4fzh0lbj108g0k"
@@ -400,9 +419,11 @@
 			</div>
 		</div>
 
-		<div class="game" data-title="Car for Sale Simulator 2023 - Desktop" data-creator="skank"><img
-				src="pics\2117315513.jpg" alt="Car for Sale Simulator 2023 - Desktop">
-			<div class="game-title">Car for Sale Simulator 2023 - Desktop</div>
+		<div class="game" data-title="Car for Sale Simulator 2023 - Desktop" data-creator="skank">
+			<img src="pics\2117315513.jpg" alt="Car for Sale Simulator 2023 - Desktop">
+			<div class="game-middle">
+				<div class="game-title">Car for Sale Simulator 2023 - Desktop</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 2117315513</div>
 				<div class="price">15 €</div><a class="buy-link"
@@ -410,19 +431,23 @@
 			</div>
 		</div>
 
-		<div class="game" data-title="Baseball Riot" data-creator="skank"><img src="pics\626624492.jpg"
-				alt="Baseball Riot">
-			<div class="game-title">Baseball Riot</div>
+		<div class="game" data-title="Baseball Riot" data-creator="skank">
+			<img src="pics\626624492.jpg" alt="Baseball Riot">
+			<div class="game-middle">
+				<div class="game-title">Baseball Riot</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 626624492</div>
-				<div class="price">5 €</div><a class="buy-link" href="https://donate.stripe.com/00wfZk0nwaDX11ndr908g0i"
-					target="_blank">Buy now</a>
+				<div class="price">5 €</div>
+				<a class="buy-link" href="https://donate.stripe.com/00wfZk0nwaDX11ndr908g0i" target="_blank">Buy now</a>
 			</div>
 		</div>
 
 		<div class="game" data-title="Your Toy" data-creator="skank">
 			<img src="pics\575845525.jpg" alt="Your Toy">
-			<div class="game-title">Your Toy</div>
+			<div class="game-middle">
+				<div class="game-title">Your Toy</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 575845525</div>
 				<div class="price">5 €</div>
@@ -434,7 +459,9 @@
 
 		<div class="game" data-title="Undisputed" data-creator="skank">
 			<img src="pics\1719923985.jpg" alt="Undisputed">
-			<div class="game-title">Undisputed</div>
+			<div class="game-middle">
+				<div class="game-title">Undisputed</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1719923985</div>
 				<div class="price">10 €</div>
@@ -446,7 +473,9 @@
 
 		<div class="game" data-title="Train Sim World® 6: Free Starter Pack" data-creator="skank">
 			<img src="pics\2063484815.jpg" alt="Train Sim World® 6: Free Starter Pack">
-			<div class="game-title">Train Sim World® 6: Free Starter Pack</div>
+			<div class="game-middle">
+				<div class="game-title">Train Sim World® 6: Free Starter Pack</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 2063484815</div>
 				<div class="price">5 €</div>
@@ -458,7 +487,9 @@
 
 		<div class="game" data-title="Train Sim World® 5: Free Starter Pack" data-creator="skank">
 			<img src="pics\1935604508.jpg" alt="Train Sim World® 5: Free Starter Pack">
-			<div class="game-title">Train Sim World® 5: Free Starter Pack</div>
+			<div class="game-middle">
+				<div class="game-title">Train Sim World® 5: Free Starter Pack</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1935604508</div>
 				<div class="price">30 €</div>
@@ -474,7 +505,9 @@ Unlock Order Information:<br><br>
   WARNING: ID 72 and 128 are unobtainable!
 </ul>">
 			<img src="pics\1669996905.jpg" alt="Train Sim World® 3" class="info-trigger">
-			<div class="game-title">Train Sim World® 3</div>
+			<div class="game-middle">
+				<div class="game-title">Train Sim World® 3</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1669996905</div>
 				<div class="price">50 €</div>
@@ -490,7 +523,9 @@ Unlock Order Information:<br><br>
   WARNING: ID 183, 342 and 424 are unobtainable!
 </ul>">
 			<img src="pics\1763742865.jpg" alt="Train Sim World® 2" class="info-trigger">
-			<div class="game-title">Train Sim World® 2</div>
+			<div class="game-middle">
+				<div class="game-title">Train Sim World® 2</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1763742865</div>
 				<div class="price">100 €</div>
@@ -502,7 +537,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Subnautica" data-creator="skank">
 			<img src="pics\945909358.jpg" alt="Subnautica">
-			<div class="game-title">Subnautica</div>
+			<div class="game-middle">
+				<div class="game-title">Subnautica</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 945909358</div>
 				<div class="price">5 €</div>
@@ -514,7 +551,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Rise of the Tomb Raider" data-creator="skank">
 			<img src="pics\434412541.jpg" alt="Rise of the Tomb Raider">
-			<div class="game-title">Rise of the Tomb Raider</div>
+			<div class="game-middle">
+				<div class="game-title">Rise of the Tomb Raider</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 434412541</div>
 				<div class="price">15 €</div>
@@ -526,7 +565,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Minecraft for Windows" data-creator="skank">
 			<img src="pics\896928775.jpg" alt="Minecraft for Windows">
-			<div class="game-title">Minecraft for Windows</div>
+			<div class="game-middle">
+				<div class="game-title">Minecraft for Windows</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 896928775</div>
 				<div class="price">10 €</div>
@@ -542,7 +583,9 @@ Unlock Order Information:<br><br>
   ID 42 -> will unlock when ALL other achievements are unlocked and it has no own trigger.
 </ul>">
 			<img src="pics\1030018025.jpg" alt="Halo Wars: Definitive Edition" class="info-trigger">
-			<div class="game-title">Halo Wars: Definitive Edition</div>
+			<div class="game-middle">
+				<div class="game-title">Halo Wars: Definitive Edition</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1030018025</div>
 				<div class="price">15 €</div>
@@ -561,7 +604,9 @@ Unlock Order Information:<br><br>
   <li>Unlocking ID 115, 117, 119, 122 and 124 in order will unlock ID 127, 128 and 129 instant.</li>
 </ul>">
 			<img src="pics\1667928394.jpg" alt="Halo Wars 2" class="info-trigger">
-			<div class="game-title">Halo Wars 2</div>
+			<div class="game-middle">
+				<div class="game-title">Halo Wars 2</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1667928394</div>
 				<div class="price">50 €</div>
@@ -573,7 +618,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Halo 5: Forge" data-creator="skank">
 			<img src="pics\766737132.jpg" alt="Halo 5: Forge">
-			<div class="game-title">Halo 5: Forge</div>
+			<div class="game-middle">
+				<div class="game-title">Halo 5: Forge</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 766737132</div>
 				<div class="price">20 €</div>
@@ -585,7 +632,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Fallout Shelter" data-creator="skank">
 			<img src="pics\2142027917.jpg" alt="Fallout Shelter">
-			<div class="game-title">Fallout Shelter</div>
+			<div class="game-middle">
+				<div class="game-title">Fallout Shelter</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 2142027917</div>
 				<div class="price">25 €</div>
@@ -597,7 +646,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Enter The Gungeon" data-creator="skank">
 			<img src="pics\401515813.jpg" alt="Enter The Gungeon">
-			<div class="game-title">Enter The Gungeon</div>
+			<div class="game-middle">
+				<div class="game-title">Enter The Gungeon</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 401515813</div>
 				<div class="price">30 €</div>
@@ -614,7 +665,9 @@ Unlock Order Information:<br><br>
 	<li>do NOT unlock ID 23 before 22</li>
 </ul>">
 			<img src="pics\1019460860.jpg" alt="DRAGON BALL XENOVERSE 2" class="info-trigger">
-			<div class="game-title">DRAGON BALL XENOVERSE 2</div>
+			<div class="game-middle">
+				<div class="game-title">DRAGON BALL XENOVERSE 2</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1019460860</div>
 				<div class="price">35 €</div>
@@ -626,7 +679,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Dishonored® Definitive Edition (PC)" data-creator="skank">
 			<img src="pics\1627819535.jpg" alt="Dishonored® Definitive Edition (PC)">
-			<div class="game-title">Dishonored® Definitive Edition (PC)</div>
+			<div class="game-middle">
+				<div class="game-title">Dishonored® Definitive Edition (PC)</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1627819535</div>
 				<div class="price">10 €</div>
@@ -642,7 +697,9 @@ Unlock Order Information:<br><br>
 	<div class="grid" id="carmine">
 		<div class="game" data-title="ACA NeoGeo Single Game" data-creator="carmine">
 			<img src="pics\103559008.jpg" alt="ACA NeoGeo Single Game">
-			<div class="game-title">ACA NeoGeo Single Game</div>
+			<div class="game-middle">
+				<div class="game-title">ACA NeoGeo Single Game</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">---</div>
 				<div class="price">3 €</div>
@@ -654,7 +711,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="ACA NeoGeo Bundle" data-creator="carmine">
 			<img src="pics\610645839.jpg" alt="ACA NeoGeo Bundle">
-			<div class="game-title">ACA NeoGeo Bundle</div>
+			<div class="game-middle">
+				<div class="game-title">ACA NeoGeo Bundle</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">---</div>
 				<div class="price">100 €</div>
@@ -666,7 +725,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Yooka-Laylee" data-creator="carmine">
 			<img src="pics\391356720.jpg" alt="Yooka-Laylee">
-			<div class="game-title">Yooka-Laylee</div>
+			<div class="game-middle">
+				<div class="game-title">Yooka-Laylee</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 391356720</div>
 				<div class="price">20 €</div>
@@ -678,7 +739,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Voodoo Vince: Remastered" data-creator="carmine">
 			<img src="pics\133113455.jpg" alt="Voodoo Vince: Remastered">
-			<div class="game-title">Voodoo Vince: Remastered</div>
+			<div class="game-middle">
+				<div class="game-title">Voodoo Vince: Remastered</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 133113455</div>
 				<div class="price">25 €</div>
@@ -690,7 +753,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Train Simulator World" data-creator="carmine">
 			<img src="pics\349397095.jpg" alt="Train Simulator World">
-			<div class="game-title">Train Simulator World</div>
+			<div class="game-middle">
+				<div class="game-title">Train Simulator World</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 349397095</div>
 				<div class="price">40 €</div>
@@ -702,7 +767,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="The Turing Test" data-creator="carmine">
 			<img src="pics\307442698.jpg" alt="The Turing Test">
-			<div class="game-title">The Turing Test</div>
+			<div class="game-middle">
+				<div class="game-title">The Turing Test</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 307442698</div>
 				<div class="price">10 €</div>
@@ -714,7 +781,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="The Evil Within® 2 (PC)" data-creator="carmine">
 			<img src="pics\1790921256.jpg" alt="The Evil Within® 2 (PC)">
-			<div class="game-title">The Evil Within® 2 (PC)</div>
+			<div class="game-middle">
+				<div class="game-title">The Evil Within® 2 (PC)</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1790921256</div>
 				<div class="price">10 €</div>
@@ -726,7 +795,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="The Escapists: The Walking Dead" data-creator="carmine">
 			<img src="pics\199875921.jpg" alt="The Escapists: The Walking Dead">
-			<div class="game-title">The Escapists: The Walking Dead</div>
+			<div class="game-middle">
+				<div class="game-title">The Escapists: The Walking Dead</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 199875921</div>
 				<div class="price">25 €</div>
@@ -738,7 +809,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="The Elder Scrolls Online" data-creator="carmine">
 			<img src="pics\1285166951.jpg" alt="The Elder Scrolls Online">
-			<div class="game-title">The Elder Scrolls Online</div>
+			<div class="game-middle">
+				<div class="game-title">The Elder Scrolls Online</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1285166951</div>
 				<div class="price">100 €</div>
@@ -750,7 +823,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Tapping Skill Test" data-creator="carmine">
 			<img src="pics\875079140.jpg" alt="Tapping Skill Test">
-			<div class="game-title">Tapping Skill Test</div>
+			<div class="game-middle">
+				<div class="game-title">Tapping Skill Test</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 875079140</div>
 				<div class="price">15 €</div>
@@ -762,7 +837,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="State of Decay 2: Juggernaut Edition" data-creator="carmine">
 			<img src="pics\1938834516.jpg" alt="State of Decay 2: Juggernaut Edition">
-			<div class="game-title">State of Decay 2: Juggernaut Edition</div>
+			<div class="game-middle">
+				<div class="game-title">State of Decay 2: Juggernaut Edition</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1938834516</div>
 				<div class="price">60 €</div>
@@ -774,7 +851,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Spheroids" data-creator="carmine">
 			<img src="pics\256748826.jpg" alt="Spheroids">
-			<div class="game-title">Spheroids</div>
+			<div class="game-middle">
+				<div class="game-title">Spheroids</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 256748826</div>
 				<div class="price">10 €</div>
@@ -786,7 +865,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Slime Rancher" data-creator="carmine">
 			<img src="pics\625948041.jpg" alt="Slime Rancher">
-			<div class="game-title">Slime Rancher</div>
+			<div class="game-middle">
+				<div class="game-title">Slime Rancher</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 625948041</div>
 				<div class="price">15 €</div>
@@ -798,7 +879,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Siegecraft Commander" data-creator="carmine">
 			<img src="pics\1722225478.jpg" alt="Siegecraft Commander">
-			<div class="game-title">Siegecraft Commander</div>
+			<div class="game-middle">
+				<div class="game-title">Siegecraft Commander</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1722225478</div>
 				<div class="price">10 €</div>
@@ -810,7 +893,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Sheltered" data-creator="carmine">
 			<img src="pics\956723990.jpg" alt="Sheltered">
-			<div class="game-title">Sheltered</div>
+			<div class="game-middle">
+				<div class="game-title">Sheltered</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 956723990</div>
 				<div class="price">15 €</div>
@@ -822,7 +907,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Shadow Complex Remastered" data-creator="carmine">
 			<img src="pics\285659276.jpg" alt="Shadow Complex Remastered">
-			<div class="game-title">Shadow Complex Remastered</div>
+			<div class="game-middle">
+				<div class="game-title">Shadow Complex Remastered</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 285659276</div>
 				<div class="price">35 €</div>
@@ -834,7 +921,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Rise of Nations: Extended Edition" data-creator="carmine">
 			<img src="pics\326835485.jpg" alt="Rise of Nations: Extended Edition">
-			<div class="game-title">Rise of Nations: Extended Edition</div>
+			<div class="game-middle">
+				<div class="game-title">Rise of Nations: Extended Edition</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 326835485</div>
 				<div class="price">20 €</div>
@@ -846,7 +935,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Riptide GP: Renegade" data-creator="carmine">
 			<img src="pics\695693557.jpg" alt="Riptide GP: Renegade">
-			<div class="game-title">Riptide GP: Renegade</div>
+			<div class="game-middle">
+				<div class="game-title">Riptide GP: Renegade</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 695693557</div>
 				<div class="price">15 €</div>
@@ -858,7 +949,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="PAC-MAN MUSEUM+" data-creator="carmine">
 			<img src="pics\1906677498.jpg" alt="PAC-MAN MUSEUM+">
-			<div class="game-title">PAC-MAN MUSEUM+</div>
+			<div class="game-middle">
+				<div class="game-title">PAC-MAN MUSEUM+</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1906677498</div>
 				<div class="price">15 €</div>
@@ -870,7 +963,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Oxenfree" data-creator="carmine">
 			<img src="pics\35717019.jpg" alt="Oxenfree">
-			<div class="game-title">Oxenfree</div>
+			<div class="game-middle">
+				<div class="game-title">Oxenfree</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 35717019</div>
 				<div class="price">15 €</div>
@@ -882,7 +977,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Neon Chrome" data-creator="carmine">
 			<img src="pics\617479290.jpg" alt="Neon Chrome">
-			<div class="game-title">Neon Chrome</div>
+			<div class="game-middle">
+				<div class="game-title">Neon Chrome</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 617479290</div>
 				<div class="price">15 €</div>
@@ -894,7 +991,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Monster Boy and the Cursed Kingdom" data-creator="carmine">
 			<img src="pics\458470194.jpg" alt="Monster Boy and the Cursed Kingdom">
-			<div class="game-title">Monster Boy and the Cursed Kingdom</div>
+			<div class="game-middle">
+				<div class="game-title">Monster Boy and the Cursed Kingdom</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 458470194</div>
 				<div class="price">25 €</div>
@@ -906,7 +1005,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Microsoft Solitaire Collection" data-creator="carmine">
 			<img src="pics\85494077.jpg" alt="Microsoft Solitaire Collection">
-			<div class="game-title">Microsoft Solitaire Collection</div>
+			<div class="game-middle">
+				<div class="game-title">Microsoft Solitaire Collection</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 85494077</div>
 				<div class="price">10 €</div>
@@ -918,7 +1019,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="MechWarrior 5: Clans" data-creator="carmine">
 			<img src="pics\1955779192.jpg" alt="MechWarrior 5: Clans">
-			<div class="game-title">MechWarrior 5: Clans</div>
+			<div class="game-middle">
+				<div class="game-title">MechWarrior 5: Clans</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1955779192</div>
 				<div class="price">45 €</div>
@@ -930,7 +1033,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Marvel's Avengers Definitive Edition" data-creator="carmine">
 			<img src="pics\102287491.jpg" alt="Marvel's Avengers Definitive Edition">
-			<div class="game-title">Marvel's Avengers Definitive Edition</div>
+			<div class="game-middle">
+				<div class="game-title">Marvel's Avengers Definitive Edition</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 102287491</div>
 				<div class="price">50 €</div>
@@ -942,7 +1047,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Kyub" data-creator="carmine">
 			<img src="pics\193718807.jpg" alt="Kyub">
-			<div class="game-title">Kyub</div>
+			<div class="game-middle">
+				<div class="game-title">Kyub</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 193718807</div>
 				<div class="price">40 €</div>
@@ -954,7 +1061,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Killer Instinct" data-creator="carmine">
 			<img src="pics\58472989.jpg" alt="Killer Instinct">
-			<div class="game-title">Killer Instinct</div>
+			<div class="game-middle">
+				<div class="game-title">Killer Instinct</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 58472989</div>
 				<div class="price">100 €</div>
@@ -966,7 +1075,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Injustice™ 2 - Standard Edition" data-creator="carmine">
 			<img src="pics\642353763.jpg" alt="Injustice™ 2 - Standard Edition">
-			<div class="game-title">Injustice™ 2 - Standard Edition</div>
+			<div class="game-middle">
+				<div class="game-title">Injustice™ 2 - Standard Edition</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 642353763</div>
 				<div class="price">35 €</div>
@@ -978,7 +1089,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Human Fall Flat" data-creator="carmine">
 			<img src="pics\312881568.jpg" alt="Human Fall Flat">
-			<div class="game-title">Human Fall Flat</div>
+			<div class="game-middle">
+				<div class="game-title">Human Fall Flat</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 312881568</div>
 				<div class="price">10 €</div>
@@ -990,7 +1103,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Hitchhiker" data-creator="carmine">
 			<img src="pics\311700060.jpg" alt="Hitchhiker">
-			<div class="game-title">Hitchhiker</div>
+			<div class="game-middle">
+				<div class="game-title">Hitchhiker</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 311700060</div>
 				<div class="price">15 €</div>
@@ -1002,7 +1117,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Halo: The Master Chief Collection" data-creator="carmine">
 			<img src="pics\1144039928.jpg" alt="Halo: The Master Chief Collection">
-			<div class="game-title">Halo: The Master Chief Collection</div>
+			<div class="game-middle">
+				<div class="game-title">Halo: The Master Chief Collection</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1144039928</div>
 				<div class="price">100 €</div>
@@ -1014,7 +1131,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="GyroShooter VR" data-creator="carmine">
 			<img src="pics\542125675.jpg" alt="GyroShooter VR">
-			<div class="game-title">GyroShooter VR</div>
+			<div class="game-middle">
+				<div class="game-title">GyroShooter VR</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 542125675</div>
 				<div class="price">10 €</div>
@@ -1026,7 +1145,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Gears of War: Ultimate Edition for Windows 10" data-creator="carmine">
 			<img src="pics\1751973977.jpg" alt="Gears of War: Ultimate Edition for Windows 10">
-			<div class="game-title">Gears of War: Ultimate Edition for Windows 10</div>
+			<div class="game-middle">
+				<div class="game-title">Gears of War: Ultimate Edition for Windows 10</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1751973977</div>
 				<div class="price">55 €</div>
@@ -1038,7 +1159,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Gears of War 4" data-creator="carmine">
 			<img src="pics\552499398.jpg" alt="Gears of War 4">
-			<div class="game-title">Gears of War 4</div>
+			<div class="game-middle">
+				<div class="game-title">Gears of War 4</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 552499398</div>
 				<div class="price">85 €</div>
@@ -1050,7 +1173,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Forza Motorsport 7" data-creator="carmine">
 			<img src="pics\1999574456.jpg" alt="Forza Motorsport 7">
-			<div class="game-title">Forza Motorsport 7</div>
+			<div class="game-middle">
+				<div class="game-title">Forza Motorsport 7</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1999574456</div>
 				<div class="price">60 €</div>
@@ -1062,7 +1187,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Forza Horizon 3" data-creator="carmine">
 			<img src="pics\1289871275.jpg" alt="Forza Horizon 3">
-			<div class="game-title">Forza Horizon 3</div>
+			<div class="game-middle">
+				<div class="game-title">Forza Horizon 3</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1289871275</div>
 				<div class="price">50 €</div>
@@ -1074,7 +1201,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Fable Fortune" data-creator="carmine">
 			<img src="pics\750338097.jpg" alt="Fable Fortune">
-			<div class="game-title">Fable Fortune</div>
+			<div class="game-middle">
+				<div class="game-title">Fable Fortune</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 750338097</div>
 				<div class="price">45 €</div>
@@ -1086,7 +1215,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="EVERSPACE™" data-creator="carmine">
 			<img src="pics\968775939.jpg" alt="EVERSPACE™">
-			<div class="game-title">EVERSPACE™</div>
+			<div class="game-middle">
+				<div class="game-title">EVERSPACE™</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 968775939</div>
 				<div class="price">30 €</div>
@@ -1098,7 +1229,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="ENDLESS Legend™ 2 (Game Preview)" data-creator="carmine">
 			<img src="pics\1644006979.jpg" alt="ENDLESS Legend™ 2 (Game Preview)">
-			<div class="game-title">ENDLESS Legend™ 2 (Game Preview)</div>
+			<div class="game-middle">
+				<div class="game-title">ENDLESS Legend™ 2 (Game Preview)</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1644006979</div>
 				<div class="price">30 €</div>
@@ -1110,7 +1243,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="ENDLESS Legend™" data-creator="carmine">
 			<img src="pics\1629481740.jpg" alt="ENDLESS Legend™">
-			<div class="game-title">ENDLESS Legend™</div>
+			<div class="game-middle">
+				<div class="game-title">ENDLESS Legend™</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1629481740</div>
 				<div class="price">5 €</div>
@@ -1122,7 +1257,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Echo Generation: Midnight Edition" data-creator="carmine">
 			<img src="pics\1730596263.jpg" alt="Echo Generation: Midnight Edition">
-			<div class="game-title">Echo Generation: Midnight Edition</div>
+			<div class="game-middle">
+				<div class="game-title">Echo Generation: Midnight Edition</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1730596263</div>
 				<div class="price">10 €</div>
@@ -1134,7 +1271,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Dungeon of the ENDLESS™" data-creator="carmine">
 			<img src="pics\1959656817.jpg" alt="Dungeon of the ENDLESS™">
-			<div class="game-title">Dungeon of the ENDLESS™</div>
+			<div class="game-middle">
+				<div class="game-title">Dungeon of the ENDLESS™</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1959656817</div>
 				<div class="price">20 €</div>
@@ -1146,7 +1285,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Dreamscaper" data-creator="carmine">
 			<img src="pics\1669152064.jpg" alt="Dreamscaper">
-			<div class="game-title">Dreamscaper</div>
+			<div class="game-middle">
+				<div class="game-title">Dreamscaper</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1669152064</div>
 				<div class="price">30 €</div>
@@ -1158,7 +1299,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Die for Valhalla!" data-creator="carmine">
 			<img src="pics\858411141.jpg" alt="Die for Valhalla!">
-			<div class="game-title">Die for Valhalla!</div>
+			<div class="game-middle">
+				<div class="game-title">Die for Valhalla!</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 858411141</div>
 				<div class="price">20 €</div>
@@ -1170,7 +1313,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Dead Rising 4" data-creator="carmine">
 			<img src="pics\749916287.jpg" alt="Dead Rising 4">
-			<div class="game-title">Dead Rising 4</div>
+			<div class="game-middle">
+				<div class="game-title">Dead Rising 4</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 749916287</div>
 				<div class="price">50 €</div>
@@ -1182,7 +1327,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="DayZ" data-creator="carmine">
 			<img src="pics\777107394.jpg" alt="DayZ">
-			<div class="game-title">DayZ</div>
+			<div class="game-middle">
+				<div class="game-title">DayZ</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 777107394</div>
 				<div class="price">40 €</div>
@@ -1194,7 +1341,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Cuphead" data-creator="carmine">
 			<img src="pics\623325843.jpg" alt="Cuphead">
-			<div class="game-title">Cuphead</div>
+			<div class="game-middle">
+				<div class="game-title">Cuphead</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 623325843</div>
 				<div class="price">30 €</div>
@@ -1206,7 +1355,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Clouds & Sheep 2" data-creator="carmine">
 			<img src="pics\348040448.jpg" alt="Clouds & Sheep 2">
-			<div class="game-title">Clouds & Sheep 2</div>
+			<div class="game-middle">
+				<div class="game-title">Clouds & Sheep 2</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 348040448</div>
 				<div class="price">15 €</div>
@@ -1218,7 +1369,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Cities: Skylines - Windows 10 Edition" data-creator="carmine">
 			<img src="pics\748474487.jpg" alt="Cities: Skylines - Windows 10 Edition">
-			<div class="game-title">Cities: Skylines - Windows 10 Edition</div>
+			<div class="game-middle">
+				<div class="game-title">Cities: Skylines - Windows 10 Edition</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 748474487</div>
 				<div class="price">15 €</div>
@@ -1230,7 +1383,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Bunny Parking (Windows)" data-creator="carmine">
 			<img src="pics\2029804115.jpg" alt="Bunny Parking (Windows)">
-			<div class="game-title">Bunny Parking (Windows)</div>
+			<div class="game-middle">
+				<div class="game-title">Bunny Parking (Windows)</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 2029804115</div>
 				<div class="price">5 €</div>
@@ -1242,7 +1397,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="BROK the InvestiGator" data-creator="carmine">
 			<img src="pics\1907372052.jpg" alt="BROK the InvestiGator">
-			<div class="game-title">BROK the InvestiGator</div>
+			<div class="game-middle">
+				<div class="game-title">BROK the InvestiGator</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1907372052</div>
 				<div class="price">15 €</div>
@@ -1254,7 +1411,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Bridge Constructor Portal" data-creator="carmine">
 			<img src="pics\58039508.jpg" alt="Bridge Constructor Portal">
-			<div class="game-title">Bridge Constructor Portal</div>
+			<div class="game-middle">
+				<div class="game-title">Bridge Constructor Portal</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 58039508</div>
 				<div class="price">15 €</div>
@@ -1266,7 +1425,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Aragami 2" data-creator="carmine">
 			<img src="pics\1678543324.jpg" alt="Aragami 2">
-			<div class="game-title">Aragami 2</div>
+			<div class="game-middle">
+				<div class="game-title">Aragami 2</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1678543324</div>
 				<div class="price">25 €</div>
@@ -1278,7 +1439,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Animated Puzzles Star" data-creator="carmine">
 			<img src="pics\882816773.jpg" alt="Animated Puzzles Star">
-			<div class="game-title">Animated Puzzles Star</div>
+			<div class="game-middle">
+				<div class="game-title">Animated Puzzles Star</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 882816773</div>
 				<div class="price">5 €</div>
@@ -1290,7 +1453,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="ABZU" data-creator="carmine">
 			<img src="pics\2143725369.jpg" alt="ABZU">
-			<div class="game-title">ABZU</div>
+			<div class="game-middle">
+				<div class="game-title">ABZU</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 2143725369</div>
 				<div class="price">10 €</div>
@@ -1302,7 +1467,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="Absolute Drift: Zen Edition" data-creator="carmine">
 			<img src="pics\537908737.jpg" alt="Absolute Drift: Zen Edition">
-			<div class="game-title">Absolute Drift: Zen Edition</div>
+			<div class="game-middle">
+				<div class="game-title">Absolute Drift: Zen Edition</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 537908737</div>
 				<div class="price">25 €</div>
@@ -1314,7 +1481,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="A Walk in the Dark" data-creator="carmine">
 			<img src="pics\1964136723.jpg" alt="A Walk in the Dark">
-			<div class="game-title">A Walk in the Dark</div>
+			<div class="game-middle">
+				<div class="game-title">A Walk in the Dark</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1964136723</div>
 				<div class="price">15 €</div>
@@ -1326,7 +1495,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="7 Days to Die (Game Preview)" data-creator="carmine">
 			<img src="pics\1745806870.jpg" alt="7 Days to Die (Game Preview)">
-			<div class="game-title">7 Days to Die (Game Preview)</div>
+			<div class="game-middle">
+				<div class="game-title">7 Days to Die (Game Preview)</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1745806870</div>
 				<div class="price">15 €</div>
@@ -1338,7 +1509,9 @@ Unlock Order Information:<br><br>
 
 		<div class="game" data-title="2020: My Country" data-creator="carmine">
 			<img src="pics\248795863.jpg" alt="2020: My Country">
-			<div class="game-title">2020: My Country</div>
+			<div class="game-middle">
+				<div class="game-title">2020: My Country</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 248795863</div>
 				<div class="price">10 €</div>
@@ -1358,7 +1531,9 @@ Unlock Order Information:<br><br>
  WARNING: 'The Best of the Best' is missing!
 </ul>">
 			<img src="pics\1866354476.jpg" alt="Iron Harvest (Windows)" class="info-trigger">
-			<div class="game-title">Iron Harvest (Windows)</div>
+			<div class="game-middle">
+				<div class="game-title">Iron Harvest (Windows)</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1866354476</div>
 				<div class="price">25 €</div>
@@ -1374,7 +1549,9 @@ Unlock Order Information:<br><br>
  WARNING: Survival Mode DLC achievements are missing!
 </ul>">
 			<img src="pics\333251915.jpg" alt="X-Morph: Defense" class="info-trigger">
-			<div class="game-title">X-Morph: Defense</div>
+			<div class="game-middle">
+				<div class="game-title">X-Morph: Defense</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 333251915</div>
 				<div class="price">15 €</div>
@@ -1390,7 +1567,9 @@ Unlock Order Information:<br><br>
  WARNING: 'Explorer', 'Heartbreaker', 'Swordbearer' and 'Legendlord' are missing!
 </ul>">
 			<img src="pics\1971845611.jpg" alt="Mount & Blade II: Bannerlord" class="info-trigger">
-			<div class="game-title">Mount & Blade II: Bannerlord</div>
+			<div class="game-middle">
+				<div class="game-title">Mount & Blade II: Bannerlord</div>
+			</div>
 			<div class="game-bottom">
 				<div class="title-id">Title ID: 1971845611</div>
 				<div class="price">35 €</div>
