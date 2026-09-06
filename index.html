@@ -1542,12 +1542,19 @@ Unlock Order Information:<br><br>
 		})();
 	</script>
 	<script>
-		// Bild klickbar machen
+		// Nur Bilder klickbar machen, die eine data-description haben
 		document.querySelectorAll('.game img').forEach(img => {
+			const game = img.closest('.game');
+			const desc = game.dataset.description;
+
+			// Wenn keine Beschreibung vorhanden → NICHT klickbar
+			if (!desc || desc.trim() === "") return;
+
+			// Wenn Beschreibung vorhanden → Klick aktivieren
+			img.style.cursor = "pointer";
 			img.addEventListener('click', () => {
-				const game = img.closest('.game');
 				document.getElementById('popup-title').textContent = game.dataset.title;
-				document.getElementById('popup-description').innerHTML = game.dataset.description;
+				document.getElementById('popup-description').innerHTML = desc;
 				document.getElementById('game-info-popup').style.display = 'flex';
 			});
 		});
