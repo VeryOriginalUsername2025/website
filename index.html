@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+	<link rel="icon" type="image/png" href="pics\favicon.png">
 	<meta charset="UTF-8">
 	<title>Plugin Games Store</title>
 	<style>
@@ -13,14 +14,33 @@
 			padding: 20px;
 		}
 
+		.header-logo {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.header-logo img {
+			width: 96px;
+			height: 96px;
+		}
+
 		h1 {
 			margin-bottom: 10px;
 		}
 
-		h2 {
+		h2,
+		h3,
+		h4 {
+			font-size: 26px;
+			font-weight: bold;
+			letter-spacing: 1px;
 			margin-top: 40px;
+			margin-bottom: 20px;
 			padding-top: 20px;
 			border-top: 2px solid #3b82f6;
+			text-shadow: 0 0 6px #e60808;
+			color: #ffffff;
 		}
 
 		.search-wrapper {
@@ -65,6 +85,7 @@
 			display: grid;
 			grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 			gap: 28px;
+			margin-bottom: 40px;
 		}
 
 		@media (max-width: 768px) {
@@ -310,7 +331,10 @@
 
 <body>
 
-	<h1>Plugin Game Store</h1>
+	<div class="header-logo">
+		<img src="pics\logo.png" alt="Logo">
+		<h1>Plugin Games Store</h1>
+	</div>
 
 	<div id="plugin-info">
 		<canvas id="matrix-canvas"></canvas>
@@ -1451,7 +1475,6 @@ Unlock Order Information:<br><br>
 			resultCount.style.display = 'none';
 		});
 	</script>
-
 	<script>
 		(function () {
 			const container = document.getElementById('plugin-info');
