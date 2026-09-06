@@ -1394,6 +1394,20 @@ Unlock Order Information:<br><br>
 			target.appendChild(game);
 		});
 
+		// 🔹 INCOMPLETE-GAMES alphabetisch sortieren
+		incompleteGames.sort((a, b) => {
+			const titleA = a.dataset.title.toLowerCase();
+			const titleB = b.dataset.title.toLowerCase();
+			return titleA.localeCompare(titleB);
+		});
+
+		// 🔹 Sortierte Incomplete-Games zurück in den Incomplete-Container
+		incompleteContainer.innerHTML = "";
+
+		incompleteGames.forEach(game => {
+			incompleteContainer.appendChild(game);
+		});
+
 		// SUCHFUNKTION
 		searchInput.addEventListener('input', () => {
 			const query = searchInput.value.toLowerCase();
