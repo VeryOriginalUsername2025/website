@@ -5,7 +5,7 @@
         <link rel="icon" type="image/png" href="pics/favicon.png">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>AAU Plugin for XAU - Plugin Games Store</title>
+        <title>Plugin for XAU - Plugin Games Store</title>
         <meta name="description"
                 content="Auto Achievement Unlocker (AAU) Plugin for the XAU / Fumo Unlocker tool. Fully automatic achievement unlocking, game queue, stat editor and more for Windows.">
         <style>
@@ -317,22 +317,6 @@
                         letter-spacing: 0.5px;
                 }
 
-                .video-fallback {
-                        font-size: 14px;
-                        color: #888;
-                        margin: -25px 0 40px 0;
-                }
-
-                .video-fallback a {
-                        color: #3b82f6;
-                        font-weight: bold;
-                        text-decoration: none;
-                }
-
-                .video-fallback a:hover {
-                        text-shadow: 0 0 8px #3b82f6;
-                }
-
                 .free-tool {
                         margin-top: 18px;
                         padding: 14px;
@@ -432,8 +416,9 @@
                 /* ===== Video ===== */
                 .video-wrap {
                         position: relative;
-                        padding-bottom: 56.25%;
-                        height: 0;
+                        width: 50%;
+                        min-width: 320px;
+                        aspect-ratio: 16 / 9;
                         overflow: hidden;
                         border-radius: 8px;
                         border: 1px solid #333;
@@ -581,6 +566,11 @@
                                 max-height: 200px;
                                 height: auto;
                                 object-fit: contain;
+                        }
+
+                        .video-wrap {
+                                width: 100%;
+                                min-width: 0;
                         }
                 }
         </style>
