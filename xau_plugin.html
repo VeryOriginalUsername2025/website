@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <link rel="icon" type="image/png" href="pics/favicon.png">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AAU Plugin for XAU - Plugin Games Store</title>
+        <meta name="description"
+                content="Auto Achievement Unlocker (AAU) Plugin for the XAU / Fumo Unlocker tool. Fully automatic achievement unlocking, game queue, stat editor and more for Windows.">
+        <style>
+                body {
+                        font-family: Arial, sans-serif;
+                        background: #111;
+                        color: #eee;
+                        margin: 0;
+                        padding: 20px;
+                }
+
+                .header-logo {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                }
+
+                .header-logo img {
+                        width: 96px;
+                        height: 96px;
+                }
+
+                h1 {
+                        margin-bottom: 10px;
+                }
+
+                h2,
+                h3,
+                h4,
+                h5 {
+                        font-size: 26px;
+                        font-weight: bold;
+                        letter-spacing: 1px;
+                        margin-top: 40px;
+                        margin-bottom: 20px;
+                        padding-top: 20px;
+                        border-top: 2px solid #3b82f6;
+                        text-shadow: 0 0 6px #e60808;
+                        color: #ffffff;
+                }
+
+                #plugin-info {
+                        position: relative;
+                        overflow: hidden;
+                        margin: 15px 0 25px 0;
+                        padding: 14px;
+                        background: #0a0a0a;
+                        border: 1px solid #1ae608;
+                        border-radius: 10px;
+                        text-align: center;
+                        font-size: 17px;
+                        color: #eee;
+                        font-family: "Courier New", monospace;
+                        letter-spacing: 1px;
+                        box-shadow:
+                                0 0 22px rgba(26, 230, 8, 0.75),
+                                inset 0 0 12px rgba(26, 230, 8, 0.3);
+                }
+
+                #matrix-canvas {
+                        position: absolute;
+                        inset: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                }
+
+                #plugin-info .plugin-row {
+                        position: relative;
+                        z-index: 10;
+                }
+
+                #plugin-info a {
+                        color: #1ae608;
+                        font-weight: bold;
+                        text-decoration: none;
+                }
+
+                #plugin-info a:hover {
+                        text-shadow: 0 0 8px #1ae608;
+                }
+
+                .grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                        gap: 28px;
+                        margin-bottom: 40px;
+                }
+
+                .game {
+                        background: #1b1b1b;
+                        border-radius: 8px;
+                        padding: 2px;
+                        text-align: center;
+                        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+                        position: relative;
+                        transition: transform 0.25s ease, box-shadow 0.25s ease;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        height: 100%;
+                }
+
+                .game:hover {
+                        transform: translateY(-12px) scale(1.04);
+                        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.75), 0 0 18px rgba(59, 130, 246, 0.35);
+                }
+
+                .game img {
+                        width: auto;
+                        height: 270px;
+                        object-fit: contain;
+                        border-radius: 6px;
+                        margin-bottom: 10px;
+                        background-color: #000;
+                }
+
+                .game.wide-img img {
+                        height: 150px;
+                }
+
+                .game-middle {
+                        min-height: 48px;
+                        max-height: 48px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 4px 6px;
+                        text-align: center;
+                        overflow: hidden;
+                }
+
+                .game-title {
+                        font-weight: bold;
+                        margin-bottom: 8px;
+                }
+
+                .game-bottom {
+                        margin-top: auto;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                        border-top: 1px solid #222;
+                        padding-top: 5px;
+                }
+
+                .title-id {
+                        font-size: 12px;
+                        color: #888;
+                        margin-top: 2px;
+                        margin-bottom: 1px;
+                        text-align: center;
+                        display: block;
+                        border-bottom: 1px solid #222;
+                        padding: 2px 0;
+                        letter-spacing: 0.5px;
+                }
+
+                .buy-link {
+                        display: inline-block;
+                        padding: 8px 12px;
+                        border-radius: 4px;
+                        background: #3b82f6;
+                        color: #fff;
+                        text-decoration: none;
+                        font-size: 14px;
+                }
+
+                .buy-link:hover {
+                        background: #2563eb;
+                }
+
+                .price {
+                        font-size: 15px;
+                        font-weight: bold;
+                        color: #3b82f6;
+                        margin-bottom: 5px;
+                }
+
+                /* ===== Produkt-Hero ===== */
+                .back-link {
+                        color: #3b82f6;
+                        text-decoration: none;
+                        font-size: 15px;
+                        display: inline-block;
+                        margin: 18px 0 6px 0;
+                }
+
+                .back-link:hover {
+                        text-shadow: 0 0 8px #3b82f6;
+                }
+
+                .product-hero {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 28px;
+                        background: #1b1b1b;
+                        border-radius: 10px;
+                        padding: 24px;
+                        margin-top: 14px;
+                        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+                        align-items: flex-start;
+                }
+
+                .hero-cover {
+                        flex: 0 0 320px;
+                        max-width: 100%;
+                }
+
+                .hero-cover img {
+                        width: 100%;
+                        height: auto;
+                        border-radius: 8px;
+                        background: #000;
+                        display: block;
+                }
+
+                .hero-info {
+                        flex: 1;
+                        min-width: 280px;
+                }
+
+                .product-title {
+                        margin-top: 0;
+                        margin-bottom: 12px;
+                        padding-top: 0;
+                        border-top: none;
+                        font-size: 30px;
+                }
+
+                .badges {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 8px;
+                        margin: 0 0 18px 0;
+                }
+
+                .badge {
+                        background: #0a0a0a;
+                        border: 1px solid #3b82f6;
+                        color: #9cc3ff;
+                        font-size: 13px;
+                        padding: 5px 11px;
+                        border-radius: 999px;
+                        font-family: "Courier New", monospace;
+                        letter-spacing: 0.5px;
+                }
+
+                .hero-price {
+                        font-size: 34px;
+                        margin-bottom: 14px;
+                }
+
+                .big-buy {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 10px;
+                        padding: 14px 28px;
+                        font-size: 19px;
+                        font-weight: bold;
+                }
+
+                .big-buy img {
+                        height: 24px;
+                        vertical-align: middle;
+                }
+
+                .hero-note {
+                        font-size: 13px;
+                        color: #888;
+                        margin-top: 10px;
+                }
+
+                .hero-actions {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 12px;
+                        align-items: center;
+                }
+
+                .dl-btn {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 10px;
+                        padding: 14px 28px;
+                        font-size: 19px;
+                        font-weight: bold;
+                        border-radius: 4px;
+                        background: #0a0a0a;
+                        color: #1ae608;
+                        border: 1px solid #1ae608;
+                        text-decoration: none;
+                        font-family: "Courier New", monospace;
+                        box-shadow: 0 0 14px rgba(26, 230, 8, 0.35);
+                        transition: background 0.2s ease, box-shadow 0.2s ease;
+                }
+
+                .dl-btn:hover {
+                        background: #062d06;
+                        box-shadow: 0 0 22px rgba(26, 230, 8, 0.6);
+                        text-shadow: 0 0 8px #1ae608;
+                }
+
+                .dl-meta {
+                        font-size: 12px;
+                        color: #888;
+                        margin-top: 10px;
+                        font-family: "Courier New", monospace;
+                        letter-spacing: 0.5px;
+                }
+
+                .video-fallback {
+                        font-size: 14px;
+                        color: #888;
+                        margin: -25px 0 40px 0;
+                }
+
+                .video-fallback a {
+                        color: #3b82f6;
+                        font-weight: bold;
+                        text-decoration: none;
+                }
+
+                .video-fallback a:hover {
+                        text-shadow: 0 0 8px #3b82f6;
+                }
+
+                .free-tool {
+                        margin-top: 18px;
+                        padding: 14px;
+                        background: #0a0a0a;
+                        border: 1px solid #333;
+                        border-left: 4px solid #1ae608;
+                        border-radius: 8px;
+                        font-size: 14px;
+                        color: #ccc;
+                        line-height: 1.6;
+                }
+
+                .free-tool a {
+                        color: #1ae608;
+                        font-weight: bold;
+                        text-decoration: none;
+                }
+
+                .free-tool a:hover {
+                        text-shadow: 0 0 8px #1ae608;
+                }
+
+                /* ===== Features ===== */
+                .feature-group-title {
+                        font-size: 18px;
+                        font-weight: bold;
+                        letter-spacing: 1px;
+                        color: #1ae608;
+                        text-shadow: 0 0 6px rgba(26, 230, 8, 0.6);
+                        margin: 34px 0 16px 0;
+                }
+
+                .feature {
+                        background: #1b1b1b;
+                        border-radius: 8px;
+                        padding: 16px 12px;
+                        text-align: center;
+                        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+                        transition: transform 0.25s ease, box-shadow 0.25s ease;
+                }
+
+                .feature:hover {
+                        transform: translateY(-8px);
+                        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.75), 0 0 18px rgba(59, 130, 246, 0.35);
+                }
+
+                .feature-icon {
+                        font-size: 32px;
+                        margin-bottom: 10px;
+                }
+
+                .feature-title {
+                        font-weight: bold;
+                        font-size: 15px;
+                        color: #fff;
+                        margin-bottom: 8px;
+                }
+
+                .feature-desc {
+                        font-size: 13px;
+                        color: #bbb;
+                        line-height: 1.55;
+                }
+
+                /* ===== Screenshots ===== */
+                .shot {
+                        background: #1b1b1b;
+                        border-radius: 8px;
+                        padding: 6px;
+                        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+                        transition: transform 0.25s ease, box-shadow 0.25s ease;
+                        cursor: pointer;
+                }
+
+                .shot:hover {
+                        transform: translateY(-8px);
+                        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.75), 0 0 18px rgba(26, 230, 8, 0.35);
+                }
+
+                .shot img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                        border-radius: 6px;
+                        background: #000;
+                        display: block;
+                }
+
+                .shot-caption {
+                        font-size: 12px;
+                        color: #888;
+                        text-align: center;
+                        padding: 8px 4px 4px 4px;
+                        letter-spacing: 0.5px;
+                }
+
+                /* ===== Video ===== */
+                .video-wrap {
+                        position: relative;
+                        padding-bottom: 56.25%;
+                        height: 0;
+                        overflow: hidden;
+                        border-radius: 8px;
+                        border: 1px solid #333;
+                        box-shadow: 0 0 14px rgba(0, 0, 0, 0.6);
+                        margin-bottom: 40px;
+                }
+
+                .video-wrap iframe {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        border: 0;
+                }
+
+                /* ===== Important Notes ===== */
+                .note-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                        gap: 18px;
+                        margin-bottom: 40px;
+                }
+
+                .note-card {
+                        background: #181818;
+                        border: 1px solid #333;
+                        border-left: 4px solid #e5ff00;
+                        border-radius: 8px;
+                        padding: 14px 16px;
+                        font-size: 14px;
+                        color: #ddd;
+                        line-height: 1.6;
+                }
+
+                .note-card b {
+                        color: #e5ff00;
+                        display: block;
+                        margin-bottom: 6px;
+                }
+
+                .popup {
+                        display: none;
+                        position: fixed;
+                        inset: 0;
+                        background: rgba(0, 0, 0, 0.85);
+                        backdrop-filter: blur(4px);
+                        z-index: 9999;
+                        justify-content: center;
+                        align-items: center;
+                }
+
+                .popup-content {
+                        background: #0a0a0a;
+                        border: 1px solid #1ae608;
+                        border-radius: 10px;
+                        padding: 20px;
+                        width: 90%;
+                        max-width: 1100px;
+                        color: #eee;
+                        box-shadow: 0 0 22px rgba(26, 230, 8, 0.75);
+                        font-family: "Courier New", monospace;
+                        max-height: 90vh;
+                        overflow: auto;
+                }
+
+                .popup-content img {
+                        width: 100%;
+                        height: auto;
+                        border-radius: 6px;
+                        display: block;
+                }
+
+                .close-btn {
+                        float: right;
+                        font-size: 28px;
+                        cursor: pointer;
+                        color: #1ae608;
+                }
+
+                .close-btn:hover {
+                        text-shadow: 0 0 8px #1ae608;
+                }
+
+                #lightbox-caption {
+                        text-align: center;
+                        margin-top: 10px;
+                        font-size: 14px;
+                        color: #1ae608;
+                }
+
+                .info-note {
+                        margin: 10px 0 30px 0;
+                        color: #3b82f6;
+                        font-size: 16px;
+                }
+
+                @media (max-width: 768px) {
+
+                        body {
+                                padding: 16px;
+                        }
+
+                        .grid,
+                        .note-grid {
+                                grid-template-columns: 1fr;
+                                gap: 24px;
+                        }
+
+                        .product-hero {
+                                flex-direction: column;
+                                padding: 16px;
+                        }
+
+                        .hero-cover {
+                                flex: none;
+                                width: 100%;
+                                max-width: 320px;
+                                margin: 0 auto;
+                        }
+
+                        .product-title {
+                                font-size: 24px;
+                        }
+
+                        .hero-price {
+                                font-size: 28px;
+                        }
+
+                        .big-buy,
+                        .dl-btn {
+                                width: 100%;
+                                justify-content: center;
+                                box-sizing: border-box;
+                        }
+
+                        .game:hover,
+                        .feature:hover,
+                        .shot:hover {
+                                transform: none;
+                                box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+                        }
+
+                        .game img {
+                                max-height: 200px;
+                                height: auto;
+                                object-fit: contain;
+                        }
+                }
+        </style>
+
+</head>
+
+<body>
+
+        <div class="header-logo">
+                <img src="pics/logo.png" alt="Logo">
+                <h1>Plugin Games Store</h1>
+        </div>
+
+        <div id="plugin-info">
+                <canvas id="matrix-canvas"></canvas>
+                <div class="plugin-row">
+                        <span class="left">
+                                Buy the Plugin:
+                                <a href="xau_plugin.html" target="_blank">
+                                        <img src="pics/aau/stripe.png" alt="Stripe Logo"
+                                                style="height:22px; vertical-align:middle; margin-right:6px;">
+                                </a>
+                        </span>
+
+                        <span class="separator">|</span>
+
+                        <span class="right">
+                                Join the community:
+                                <a href="https://discord.gg/C726WrZWbt" target="_blank">
+                                        <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e278299a53f5bf88615e90_Symbol.svg"
+                                                alt="Discord"
+                                                style="height:22px; vertical-align:middle; margin-right:6px;">
+                                </a>
+                        </span>
+                </div>
+        </div>
+
+        <div style="margin-bottom:20px; font-size:14px; color:#888; text-align:center;">
+                <strong>Only authentic on https://skankhunt.sbs</strong> — all other sites are fakes.
+        </div>
+
+        <a class="back-link" href="index.html">&larr; Back to all Games</a>
+
+        <div class="product-hero">
+                <div class="hero-cover">
+                        <img src="pics/aau/cover.png" alt="Auto Achievement Unlocker Plugin">
+                </div>
+                <div class="hero-info">
+                        <h2 class="product-title">Auto Achievement Unlocker Plugin for XAU (Windows)</h2>
+                        <div class="badges">
+                                <span class="badge">Windows</span>
+                                <span class="badge">XAU / Fumo Unlocker Plugin</span>
+                                <span class="badge">Developed by SkankHunt42 &amp; The Clowning Crew</span>
+                                <span class="badge">Support &amp; Sales: SkankHunt42</span>
+                        </div>
+                        <div class="hero-price price">35,00 €</div>
+                        <div class="hero-actions">
+                                <!-- TODO: Replace with your real download URL (recommended: GitHub Releases, see chat) -->
+                                <a class="dl-btn"
+                                        href="https://github.com/VeryOriginalUsername2025/website/releases/latest/download/xau_plugin_3.0.0.exe">
+                                        ⬇ Download .exe
+                                </a>
+                                <a class="big-buy buy-link" href="https://buy.stripe.com/5kQfZkeemdQ939vdr908g0w"
+                                        target="_blank">
+                                        <img src="pics/aau/stripe.png" alt="Stripe"> Buy license
+                                </a>
+                        </div>
+                        <!-- TODO: Update version / file size / SHA-256 hash after uploading your exe -->
+                        <div class="dl-meta">xau_plugin.exe &middot; v3.0.0 &middot; ~12.7 MB &middot; Windows 10/11
+                                &middot; SHA-256:
+                                sha256:5ab3ee553cd5b064a1234a3f3f579289980d15f42e36a86062361cbf33c5a9cf</div>
+                        <div class="hero-note">Download free &mdash; activation requires a license</div>
+                        <div class="free-tool">
+                                Get the <b>Auto Achievement Unlocker (AAU) Plugin</b>, designed specifically for the
+                                <b>XAU / Fumo Unlocker</b> tool.<br>
+                                You are only paying for this plugin — not for the main tool.<br>
+                                Download XAU/Fumo Unlocker for free:
+                                <a href="https://github.com/Fumo-Unlockers/Xbox-Achievement-Unlocker/releases"
+                                        target="_blank">github.com/Fumo-Unlockers/Xbox-Achievement-Unlocker/releases</a>
+                        </div>
+                </div>
+        </div>
+
+        <h3>Important</h3>
+        <div class="note-grid">
+                <div class="note-card">
+                        <b>No Refunds</b>
+                        No refunds after purchase. Please make sure this plugin is what you need before buying.
+                </div>
+                <div class="note-card">
+                        <b>Previous Buyers</b>
+                        If you bought it previously, you can download it for free with your receipt.
+                </div>
+                <div class="note-card">
+                        <b>Personal Use Only</b>
+                        For personal use only. Commercial use will result in revoked access.
+                </div>
+                <div class="note-card">
+                        <b>Need Help?</b>
+                        Encountered a problem? Please join the Discord:
+                        <a href="https://discord.gg/C726WrZWbt" target="_blank"
+                                style="color:#1ae608; font-weight:bold; text-decoration:none;">discord.gg/C726WrZWbt</a>
+                </div>
+        </div>
+
+        <h3>What the AAU Plugin Does</h3>
+
+        <div class="feature-group-title">🎯 Core Achievement Unlocking</div>
+        <div class="grid">
+                <div class="feature">
+                        <div class="feature-icon">🚀</div>
+                        <div class="feature-title">Fully Automatic Unlocker</div>
+                        <div class="feature-desc">One-click auto-unlock for entire games. The plugin handles timing,
+                                progress tracking, verification and error recovery automatically — just press Start and
+                                let it run.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-title">Manual Single Unlock</div>
+                        <div class="feature-desc">Unlock any individual achievement by ID. Perfect for picking off
+                                specific achievements you are missing.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🧠</div>
+                        <div class="feature-title">Smart Unlock Order</div>
+                        <div class="feature-desc">Enter a reference gamertag and the plugin pulls their achievement data
+                                directly from Xbox Live, generating a perfectly timed unlock order with original
+                                timestamps preserved.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">⏱️</div>
+                        <div class="feature-title">Custom Timing Control</div>
+                        <div class="feature-desc">Choose original timing (replicates the reference player's unlock
+                                schedule) or set custom delays in hours and minutes for faster or slower unlocking.
+                        </div>
+                </div>
+        </div>
+
+        <div class="feature-group-title">🎮 Game Queue &amp; Batch Processing</div>
+        <div class="grid">
+                <div class="feature">
+                        <div class="feature-icon">📋</div>
+                        <div class="feature-title">Multi-Game Queue</div>
+                        <div class="feature-desc">Queue up multiple games and let the plugin unlock them all
+                                sequentially — automatically moving to the next game when one finishes, with
+                                configurable cooldown between games.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">📥</div>
+                        <div class="feature-title">Queue Import</div>
+                        <div class="feature-desc">Paste a list of title IDs and gamertags to bulk-add games to the queue
+                                instantly.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🧩</div>
+                        <div class="feature-title">Stack Suggestions</div>
+                        <div class="feature-desc">Automatically detects cross-platform versions of the same game (e.g.
+                                Xbox One vs. Series X|S) and suggests adding them all to the queue at once.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🕘</div>
+                        <div class="feature-title">Gamertag History</div>
+                        <div class="feature-desc">Remembers your last 10 used gamertags with auto-complete, so you don't
+                                have to re-type them.</div>
+                </div>
+        </div>
+
+        <div class="feature-group-title">⚡ Performance &amp; Intelligence</div>
+        <div class="grid">
+                <div class="feature">
+                        <div class="feature-icon">📡</div>
+                        <div class="feature-title">RTA WebSocket Monitoring</div>
+                        <div class="feature-desc">Connects to Xbox Live's real-time achievement event stream via
+                                WebSocket, providing instant feedback when achievements unlock — no polling delays.
+                        </div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🛡️</div>
+                        <div class="feature-title">Multi-Layer Fallback</div>
+                        <div class="feature-desc">If an unlock fails, the plugin automatically retries with alternate
+                                strategies: string replacement, main folder data fallback and title-based nudge.
+                                Achievements that are 100% complete but still locked get a special force-unlock attempt.
+                        </div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🎫</div>
+                        <div class="feature-title">Event Token Grabber</div>
+                        <div class="feature-desc">Retrieves the required event tokens with a single button press — the
+                                system briefly launches Microsoft Solitaire Collection, captures the active
+                                authentication token and feeds it into the plugin. Fully automated.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🔐</div>
+                        <div class="feature-title">OAuth Login</div>
+                        <div class="feature-desc">Secure OAuth authentication flow using an included external helper
+                                tool. Sign in with your Xbox credentials once — the tool handles token generation.</div>
+                </div>
+        </div>
+
+        <div class="feature-group-title">🔧 Advanced Tools</div>
+        <div class="grid">
+                <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">Stat Editor</div>
+                        <div class="feature-desc">Read and write in-game stats directly via Xbox Live APIs. View hero
+                                stats, modify values and verify changes with automatic read-back verification.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">📮</div>
+                        <div class="feature-title">Event Stat Editor</div>
+                        <div class="feature-desc">Send custom game events through Xbox's OneCollector pipeline to modify
+                                stats that can't be changed through the stats API.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">⏭️</div>
+                        <div class="feature-title">Skip List Editor</div>
+                        <div class="feature-desc">Choose exactly which achievements to skip during auto-unlocking.
+                                Search, browse and toggle individual achievements with a visual editor.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">⏳</div>
+                        <div class="feature-title">Delay Editor</div>
+                        <div class="feature-desc">Customize the timing delay for every individual achievement. Override
+                                the generated timing with your own schedule using hours, minutes and seconds.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🎭</div>
+                        <div class="feature-title">Game Spoofing</div>
+                        <div class="feature-desc">Makes Xbox Live think you're actively playing the target game, with
+                                automatic background ping every 5 minutes to keep the session alive throughout long
+                                unlock sessions.</div>
+                </div>
+        </div>
+
+        <div class="feature-group-title">🕹️ Game Library &amp; Discovery</div>
+        <div class="grid">
+                <div class="feature">
+                        <div class="feature-icon">☁️</div>
+                        <div class="feature-title">Cloud Game Library</div>
+                        <div class="feature-desc">Games are fetched from the cloud, always showing the latest supported
+                                titles with automatic franchise grouping.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-title">Game Search</div>
+                        <div class="feature-desc">Search the entire Xbox game catalog by name to find title IDs
+                                instantly.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🔔</div>
+                        <div class="feature-title">New Games Notifications</div>
+                        <div class="feature-desc">Get alerted when new games are added to the supported library since
+                                your last session.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🔄</div>
+                        <div class="feature-title">Recent Games</div>
+                        <div class="feature-desc">Quick-access list of your last 5 used games for one-click reloading.
+                        </div>
+                </div>
+        </div>
+
+        <div class="feature-group-title">💾 Session Management</div>
+        <div class="grid">
+                <div class="feature">
+                        <div class="feature-icon">♻️</div>
+                        <div class="feature-title">Auto-Resume on Restart</div>
+                        <div class="feature-desc">If you close the app or it crashes mid-unlock, it saves the exact
+                                state (achievement, timing, target time) and resumes from where it left off on next
+                                launch.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">⏰</div>
+                        <div class="feature-title">Live Countdown Timer</div>
+                        <div class="feature-desc">Real-time countdown to the next unlock with the exact local time it
+                                will fire — e.g. 00:05:32 - Achievement Name (unlocks at 14:23:15).</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-title">Progress Tracking</div>
+                        <div class="feature-desc">Visual progress bar with X/X achievement counter and estimated
+                                remaining time that updates in real time.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🌈</div>
+                        <div class="feature-title">Color-Coded Log System</div>
+                        <div class="feature-desc">Timestamped, color-coded logs — green = unlocked, red = error, yellow
+                                = warning, blue = info — for complete visibility into what's happening.</div>
+                </div>
+        </div>
+
+        <div class="feature-group-title">📦 Auto-Updates &amp; 🎨 User Interface</div>
+        <div class="grid">
+                <div class="feature">
+                        <div class="feature-icon">⬇️</div>
+                        <div class="feature-title">OTA Updates</div>
+                        <div class="feature-desc">Automatically checks for new versions on startup. One-click download
+                                and install with progress bar — no manual downloads needed.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">📝</div>
+                        <div class="feature-title">Changelog Popup</div>
+                        <div class="feature-desc">Shows what's new after every update, so users always know about new
+                                features and improvements.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🌗</div>
+                        <div class="feature-title">Dark &amp; Light Themes</div>
+                        <div class="feature-desc">Toggle between dark and light mode with a polished, modern UI and
+                                franchise-grouped game picker.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🪟</div>
+                        <div class="feature-title">Dynamic Window Title</div>
+                        <div class="feature-desc">Shows the current game name in the window title bar for easy
+                                identification, with a color-coded scrolling log console.</div>
+                </div>
+                <div class="feature">
+                        <div class="feature-icon">🎉</div>
+                        <div class="feature-title">Full Events V2 Support</div>
+                        <div class="feature-desc">Works with event-based games out of the box — check the tutorial video
+                                below.</div>
+                </div>
+        </div>
+        <h3>Screenshots</h3>
+        <div class="grid">
+                <div class="shot" data-caption="Main Plugin UI — Game Setup &amp; Auto Unlocker">
+                        <img src="pics/aau/shot5.png" alt="Main Plugin UI">
+                        <div class="shot-caption">Main Plugin UI — Game Setup &amp; Auto Unlocker</div>
+                </div>
+                <div class="shot" data-caption="Auto Unlocker running — Live Countdown Timer">
+                        <img src="pics/aau/shot1.png" alt="Live Countdown Timer">
+                        <div class="shot-caption">Auto Unlocker running — Live Countdown Timer</div>
+                </div>
+                <div class="shot" data-caption="Delay Editor &amp; Game Queue">
+                        <img src="pics/aau/shot3.png" alt="Delay Editor and Game Queue">
+                        <div class="shot-caption">Delay Editor &amp; Game Queue</div>
+                </div>
+                <div class="shot" data-caption="Stack Suggestions — cross-platform detection">
+                        <img src="pics/aau/shot4.png" alt="Stack Suggestions">
+                        <div class="shot-caption">Stack Suggestions — cross-platform detection</div>
+                </div>
+                <div class="shot" data-caption="Queue Import — bulk-add games">
+                        <img src="pics/aau/shot7.png" alt="Queue Import">
+                        <div class="shot-caption">Queue Import — bulk-add games</div>
+                </div>
+                <div class="shot" data-caption="New Games Notifications">
+                        <img src="pics/aau/shot2.png" alt="New Games Notifications">
+                        <div class="shot-caption">New Games Notifications</div>
+                </div>
+                <div class="shot" data-caption="Stat Editor — read &amp; write in-game stats">
+                        <img src="pics/aau/shot6.png" alt="Stat Editor">
+                        <div class="shot-caption">Stat Editor — read &amp; write in-game stats</div>
+                </div>
+        </div>
+
+        <h3>See the Plugin in Action</h3>
+        <div class="video-wrap">
+                <iframe src="https://www.youtube.com/embed/lhKoS8fQIEU"
+                        title="Auto Achievement Unlocker Plugin in action"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-wrap">
+                <iframe src="https://www.youtube.com/embed/bmVau4YYo24" title="Full Events V2 support Tutorial"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div id="lightbox" class="popup">
+                <div class="popup-content">
+                        <span class="close-btn">&times;</span>
+                        <img id="lightbox-img" src="" alt="Screenshot">
+                        <div id="lightbox-caption"></div>
+                </div>
+        </div>
+
+        <script>
+                (function () {
+                        const container = document.getElementById('plugin-info');
+                        const canvas = document.getElementById('matrix-canvas');
+                        const ctx = canvas.getContext('2d');
+
+                        function resizeCanvas() {
+                                const rect = container.getBoundingClientRect();
+                                canvas.width = rect.width;
+                                canvas.height = rect.height;
+                        }
+
+                        resizeCanvas();
+                        window.addEventListener('resize', resizeCanvas);
+
+                        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ｱｶｻﾀﾅﾊﾏﾔﾗﾜｷｸｹｺｻｼｽｾｿﾁﾂﾃﾄﾆﾇﾈﾉﾋﾌﾍﾎﾐﾑﾒﾓﾕﾖ[]{}|/\\#$%&*+-=ΩΣλπ∞√∆';
+
+                        const fontSize = 18;
+                        const columns = Math.floor(canvas.width / fontSize);
+                        const drops = [];
+
+                        for (let i = 0; i < columns; i++) {
+                                drops[i] = Math.random() * canvas.height / fontSize;
+                        }
+
+                        function draw() {
+                                ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+                                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                                ctx.font = fontSize + 'px "Courier New", monospace';
+
+                                for (let i = 0; i < drops.length; i++) {
+                                        const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                                        const x = i * fontSize;
+                                        const y = drops[i] * fontSize;
+
+                                        ctx.fillStyle = 'rgba(0, 255, 0, 0.55)';
+                                        ctx.fillText(text, x, y);
+
+                                        if (Math.random() < 0.25) {
+                                                ctx.fillStyle = '#ffffff';
+                                                ctx.shadowColor = '#1ae608';
+                                                ctx.shadowBlur = 12;
+                                                ctx.fillText(text, x, y);
+                                                ctx.shadowBlur = 0;
+                                        }
+
+                                        drops[i]++;
+
+                                        if (y > canvas.height && Math.random() > 0.975) {
+                                                drops[i] = 0;
+                                        }
+                                }
+
+                                requestAnimationFrame(draw);
+                        }
+
+                        draw();
+                })();
+        </script>
+        <script>
+                // Screenshot lightbox
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                const lightboxCaption = document.getElementById('lightbox-caption');
+
+                document.querySelectorAll('.shot img').forEach(img => {
+                        img.closest('.shot').addEventListener('click', () => {
+                                lightboxImg.src = img.src;
+                                lightboxCaption.textContent = img.closest('.shot').dataset.caption || '';
+                                lightbox.style.display = 'flex';
+                        });
+                });
+
+                document.querySelector('#lightbox .close-btn').addEventListener('click', () => {
+                        lightbox.style.display = 'none';
+                });
+
+                lightbox.addEventListener('click', (e) => {
+                        if (e.target === lightbox) {
+                                lightbox.style.display = 'none';
+                        }
+                });
+
+                document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape') {
+                                lightbox.style.display = 'none';
+                        }
+                });
+        </script>
+
+</body>
+
+</html>
