@@ -3498,7 +3498,7 @@ Unlock Order Information:<br><br>
 			const desc = (game.dataset.description || "").toLowerCase();
 
 			const hasWarning =
-				desc.includes("information")
+				desc.includes("information") || desc.includes ("warning")
 
 			if (hasWarning) {
 				game.classList.add("has-warning");
